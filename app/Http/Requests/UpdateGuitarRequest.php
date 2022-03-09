@@ -25,9 +25,8 @@ class UpdateGuitarRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'id'    => 'required|integer',
-            'name'  => 'required|string',
+        return [ 
+            'name'  => 'required|string|unique:guitars',
             'type'  => 'required|string',
             'brand' => 'required|string',
             'date_bought'  => 'required|date',
@@ -37,6 +36,7 @@ class UpdateGuitarRequest extends FormRequest
     public function update($id)
     { 
         $data = Guitar::findOrFail($id); 
-        return new GuitarResource($data->update($this->validated()));    
+        $data->update($this->validated());
+        return $data;    
     }
 }

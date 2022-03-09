@@ -26,7 +26,7 @@ class StoreGuitarRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'  => 'required|string',
+            'name'  => 'required|string|unique:guitars',
             'type'  => 'required|string',
             'brand' => 'required|string',
             'date_bought'  => 'required|date',

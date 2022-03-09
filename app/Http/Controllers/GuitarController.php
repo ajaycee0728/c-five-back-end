@@ -83,8 +83,13 @@ class GuitarController extends Controller
      * @param  \App\Models\Guitar  $guitar
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Guitar $guitar)
+    public function destroy($id)
     {
-        //
+        
+        $data = Guitar::findOrFail($id); 
+        $data->delete();
+        return response()->json([
+            'message' =>'prior order delete'
+        ]);
     }
 }

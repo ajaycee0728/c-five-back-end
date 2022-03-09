@@ -14,6 +14,12 @@ class GuitarResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id'            => $this->id,
+            'name'          => $this->name,
+            'type'          => $this->type,
+            'brand'         => $this->brand,
+            'date_bought'   => $this->date_bought
+        ];
     }
 }
